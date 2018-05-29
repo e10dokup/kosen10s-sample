@@ -1,8 +1,7 @@
 apply plugin: 'com.android.application'
-
 apply plugin: 'kotlin-android'
-
 apply plugin: 'kotlin-android-extensions'
+apply plugin: 'kotlin-kapt'
 
 def VERSION_CODE = 1
 def VERSION_NAME = "0.0.1"
@@ -112,7 +111,10 @@ dependencies {
 
     // retrofit
     implementation 'com.squareup.retrofit2:retrofit:2.3.0'
-    implementation 'com.squareup.retrofit2:converter-gson:2.3.0'
+    implementation "com.squareup.retrofit2:converter-moshi:2.3.0"
+
+    // moshi
+    implementation "com.squareup.moshi:moshi:1.6.0"
 
     // okhttp
     implementation 'com.squareup.okhttp3:okhttp:3.10.0'
@@ -123,4 +125,7 @@ dependencies {
         exclude module: "support-v13"
     }
     annotationProcessor "com.github.hotchemi:permissionsdispatcher-processor:3.2.0"
+
+    implementation 'se.ansman.kotshi:api:1.0.4'
+    kapt 'se.ansman.kotshi:compiler:1.0.4'
 }
