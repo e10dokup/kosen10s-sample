@@ -7,7 +7,7 @@ import net.kosen10s.example.R
 import net.kosen10s.example.entity.Article
 
 class ArticleItem constructor(
-        private val article: Article
+        val article: Article
 ): Item() {
 
     override fun getLayout() = R.layout.item_article

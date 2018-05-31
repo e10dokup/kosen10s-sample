@@ -1,6 +1,7 @@
 package net.kosen10s.example.view.articles
 
 import android.os.Bundle
+import android.support.design.widget.Snackbar
 import android.support.v7.app.AppCompatActivity
 import android.support.v7.widget.LinearLayoutManager
 import android.support.v7.widget.RecyclerView
@@ -19,7 +20,12 @@ class ArticlesActivity: AppCompatActivity() {
         ArticlesActivityPresenter(this)
     }
 
-    private val adapter = GroupAdapter<ViewHolder>()
+    private val adapter = GroupAdapter<ViewHolder>().apply {
+        setOnItemClickListener({ item, _ ->
+            val articleItem = item as? ArticleItem ?: return@setOnItemClickListener
+            Snackbar.make(articles_recycler, articleItem.article.title, Snackbar.LENGTH_SHORT).show()
+        })
+    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
