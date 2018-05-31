@@ -1,7 +1,7 @@
 package net.kosen10s.example.presenter
 
-import net.kosen10s.example.navigater.MainNavigator
-import net.kosen10s.example.view.main.MainActivity
+import net.kosen10s.example.view.navigator.MainNavigator
+import net.kosen10s.example.view.screen.main.MainActivity
 
 class MainActivityPresenter constructor(
         activity: MainActivity

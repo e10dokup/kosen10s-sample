@@ -3,9 +3,7 @@ package net.kosen10s.example.presenter
 import android.util.Log
 import net.kosen10s.example.datasource.ArticlesDataSource
 import net.kosen10s.example.entity.Article
-import net.kosen10s.example.navigater.MainNavigator
-import net.kosen10s.example.view.articles.ArticlesActivity
-import net.kosen10s.example.view.main.MainActivity
+import net.kosen10s.example.view.screen.articles.ArticlesActivity
 
 class ArticlesActivityPresenter constructor(
         activity: ArticlesActivity

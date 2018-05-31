@@ -1,18 +1,15 @@
-package net.kosen10s.example.view.articles
+package net.kosen10s.example.view.screen.articles
 
 import android.os.Bundle
 import android.support.design.widget.Snackbar
 import android.support.v7.app.AppCompatActivity
 import android.support.v7.widget.LinearLayoutManager
-import android.support.v7.widget.RecyclerView
-import android.util.Log
 import com.xwray.groupie.GroupAdapter
 import com.xwray.groupie.ViewHolder
 import kotlinx.android.synthetic.main.activity_articles.*
 import net.kosen10s.example.R
-import net.kosen10s.example.item.ArticleItem
+import net.kosen10s.example.view.item.ArticleItem
 import net.kosen10s.example.presenter.ArticlesActivityPresenter
-import net.kosen10s.example.presenter.MainActivityPresenter
 
 class ArticlesActivity: AppCompatActivity() {
 

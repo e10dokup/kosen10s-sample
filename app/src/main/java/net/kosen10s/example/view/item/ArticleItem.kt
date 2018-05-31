@@ -1,4 +1,4 @@
-package net.kosen10s.example.item
+package net.kosen10s.example.view.item
 
 import com.xwray.groupie.kotlinandroidextensions.Item
 import com.xwray.groupie.kotlinandroidextensions.ViewHolder
