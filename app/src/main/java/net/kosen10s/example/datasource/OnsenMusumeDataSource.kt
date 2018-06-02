@@ -18,13 +18,9 @@ class OnsenMusumeDataSource(activity: Activity) {
     val activity = activity
     val moshi = Moshi.Builder().add(ApplicationJsonAdapterFactory.INSTANCE).build()!!
 
-    fun getMusume(point: Point, characterId: String? = null): OnsenMusume {
-        var id = characterId
-        if (id == null) {
-            id = (0..2).random().toString()
-        }
+    fun getMusume(point: Point, characterId: String? = "0"): OnsenMusume {
         val list = getList()
-        val characterData = list.filter { it.id == id }.toTypedArray()[0]
+        val characterData = list.filter { it.id == characterId }.toTypedArray()[0]
         characterData.speech_texts.sortBy { it.point }
         var speechText = ""
         for ((i, value) in characterData.speech_texts.withIndex()) {
