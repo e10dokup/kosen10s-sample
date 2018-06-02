@@ -7,15 +7,15 @@ import android.hardware.SensorEventListener
 import android.hardware.SensorManager
 import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
+import android.util.Log
 import kotlinx.android.synthetic.main.activity_main.*
 import net.kosen10s.example.R
-import net.kosen10s.example.R.id.bottom_navigation
-import net.kosen10s.example.R.id.swipe_view
+import net.kosen10s.example.entity.Training
 import net.kosen10s.example.ext.dpToPx
 import net.kosen10s.example.presenter.MainActivityPresenter
 import net.kosen10s.example.view.item.MuscleCard
 
-class MainActivity : AppCompatActivity(), SensorEventListener {
+class MainActivity : AppCompatActivity(), SensorEventListener, MuscleCard.Callback {
 
     private lateinit var sensorManager: SensorManager
 
@@ -53,10 +53,6 @@ class MainActivity : AppCompatActivity(), SensorEventListener {
                 .setHeightSwipeDistFactor(10f)
                 .setWidthSwipeDistFactor(5f)
 
-        swipe_view.addView(MuscleCard(this, swipe_view))
-        swipe_view.addView(MuscleCard(this, swipe_view))
-        swipe_view.addView(MuscleCard(this, swipe_view))
-
         sensorManager = this.getSystemService(Context.SENSOR_SERVICE) as SensorManager
     }
 
@@ -67,6 +63,12 @@ class MainActivity : AppCompatActivity(), SensorEventListener {
         val accel : Sensor = sensorManager.getDefaultSensor(Sensor.TYPE_ACCELEROMETER)
 
         sensorManager.registerListener(this as SensorEventListener, accel, SensorManager.SENSOR_DELAY_NORMAL)
+
+        presenter.getTrainings {
+            it.forEach {
+                swipe_view.addView(MuscleCard(this, it, swipe_view, this))
+            }
+        }
     }
 
     override fun onPause() {
@@ -94,5 +96,9 @@ class MainActivity : AppCompatActivity(), SensorEventListener {
     }
 
     override fun onAccuracyChanged(sensor: Sensor?, accuracy: Int) {
+    }
+
+    override fun onSwipeUp(training: Training) {
+        Log.d("training", training.name)
     }
 }
