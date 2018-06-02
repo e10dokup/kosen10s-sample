@@ -1,0 +1,59 @@
+[
+  {
+    "id": "0",
+    "name": "下呂美月",
+    "image_name": "gero_mitsuki.png",
+    "speech_texts": [
+      {
+        "point": 0,
+        "text": "Hello"
+      },
+      {
+        "point": 100,
+        "text": "Hello"
+      },
+      {
+        "point": 200,
+        "text": "Hello"
+      }
+    ]
+  },
+  {
+    "id": "1",
+    "name": "秋保那菜子",
+    "image_name": "akiu_nanako.png",
+    "speech_texts": [
+      {
+        "point": 0,
+        "text": "Hello"
+      },
+      {
+        "point": 100,
+        "text": "Hello"
+      },
+      {
+        "point": 200,
+        "text": "Hello"
+      }
+    ]
+  },
+  {
+    "id": "2",
+    "name": "箱根彩耶",
+    "image_name": "hakone_saya.png",
+    "speech_texts": [
+      {
+        "point": 0,
+        "text": "Hello"
+      },
+      {
+        "point": 100,
+        "text": "Hello"
+      },
+      {
+        "point": 200,
+        "text": "Hello"
+      }
+    ]
+  }
+]
