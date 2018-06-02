@@ -11,7 +11,7 @@ class MainActivityPresenter constructor(
 
     private val navigator = MainNavigator(activity)
     private var moved_count = 0
-    private val trainingDataSource = TrainingDataSource()
+    private val trainingDataSource = TrainingDataSource(activity)
 
     fun onClickStartButton() {
         navigator.navigateToNews()
