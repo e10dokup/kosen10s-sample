@@ -96,6 +96,7 @@ dependencies {
     implementation "com.android.support:support-v4:27.1.1"
     implementation "com.android.support:appcompat-v7:27.1.1"
     implementation "com.android.support:recyclerview-v7:27.1.1"
+    implementation 'com.android.support:cardview-v7:27.1.1'
     implementation "com.android.support:design:27.1.1"
     implementation 'com.android.support.constraint:constraint-layout:1.1.0'
     testImplementation 'junit:junit:4.12'
@@ -138,4 +139,7 @@ dependencies {
 
     implementation 'com.google.firebase:firebase-core:16.0.0'
     implementation 'com.google.firebase:firebase-auth:16.0.1'
+
+    implementation 'com.mindorks.android:placeholderview:1.0.3'
+    kapt 'com.mindorks.android:placeholderview-compiler:1.0.3'
 }

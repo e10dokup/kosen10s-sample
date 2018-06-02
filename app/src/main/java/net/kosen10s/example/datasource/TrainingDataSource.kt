@@ -1,6 +1,5 @@
 package net.kosen10s.example.datasource
 
-import android.app.Activity
 import net.kosen10s.example.entity.Training
 
 class TrainingDataSource {
@@ -19,10 +18,10 @@ class TrainingDataSource {
         return arrayOf(
                 Training(
                         name = "トレーニング名",
+                        category = "カテゴリ", // カテゴリ画像URI
                         description = "トレーニングの説明文",
-                        category = "カテゴリ",
-                        image = 0,
-                        targetNum = 30
+                        image = "null", // カテゴリ画像URI
+                        target = "null"
                 )
         )
     }
