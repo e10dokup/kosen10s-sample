@@ -8,9 +8,18 @@ class MainActivityPresenter constructor(
 ) {
 
     private val navigator = MainNavigator(activity)
+    private var moved_count = 0
 
     fun onClickStartButton() {
         navigator.navigateToNews()
+    }
+
+    fun countup() {
+        moved_count++
+    }
+
+    fun count(): Int {
+        return moved_count
     }
 
 }
