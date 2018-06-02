@@ -1,58 +1,20 @@
 [
   {
     "id": "0",
-    "name": "下呂美月",
-    "image_name": "gero_mitsuki.png",
+    "name": "有馬輪花",
+    "image_name": "arima_rinka_card.png",
     "speech_texts": [
       {
         "point": 0,
-        "text": "0 points message"
+        "text": "あんた鍛え方足りないんじゃないの? もうちょっとがんばりなさいよ"
       },
       {
         "point": 100,
-        "text": "100 points message"
+        "text": "ちょっとはやれるようになったじゃない。一応応援してやるわ！"
       },
       {
-        "point": 200,
-        "text": "200 points message"
-      }
-    ]
-  },
-  {
-    "id": "1",
-    "name": "秋保那菜子",
-    "image_name": "akiu_nanako.png",
-    "speech_texts": [
-      {
-        "point": 0,
-        "text": "0 points message"
-      },
-      {
-        "point": 100,
-        "text": "100 points message"
-      },
-      {
-        "point": 200,
-        "text": "200 points message"
-      }
-    ]
-  },
-  {
-    "id": "2",
-    "name": "箱根彩耶",
-    "image_name": "hakone_saya.png",
-    "speech_texts": [
-      {
-        "point": 0,
-        "text": "0 points message"
-      },
-      {
-        "point": 100,
-        "text": "100 points message"
-      },
-      {
-        "point": 200,
-        "text": "200 points message"
+        "point": 450,
+        "text": "私の応援が活きたわね！し、仕方ないから認めてやってもいいわ！"
       }
     ]
   }
