@@ -9,7 +9,11 @@ import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
 import kotlinx.android.synthetic.main.activity_main.*
 import net.kosen10s.example.R
+import net.kosen10s.example.R.id.bottom_navigation
+import net.kosen10s.example.R.id.swipe_view
+import net.kosen10s.example.ext.dpToPx
 import net.kosen10s.example.presenter.MainActivityPresenter
+import net.kosen10s.example.view.item.MuscleCard
 
 class MainActivity : AppCompatActivity(), SensorEventListener {
 
@@ -27,10 +31,6 @@ class MainActivity : AppCompatActivity(), SensorEventListener {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        start_button.setOnClickListener {
-            presenter.onClickStartButton()
-        }
-
         // bottom_navigation
         bottom_navigation.selectedItemId = R.id.nav_camera
         bottom_navigation.isEnabled = false
@@ -44,7 +44,19 @@ class MainActivity : AppCompatActivity(), SensorEventListener {
                 else -> return@setOnNavigationItemSelectedListener false
             }
         }
-        
+
+        swipe_view.builder
+                .setDisplayViewCount(3)
+                .setIsUndoEnabled(true)
+                .setSwipeVerticalThreshold(50.dpToPx())
+                .setSwipeHorizontalThreshold(50.dpToPx())
+                .setHeightSwipeDistFactor(10f)
+                .setWidthSwipeDistFactor(5f)
+
+        swipe_view.addView(MuscleCard(this, swipe_view))
+        swipe_view.addView(MuscleCard(this, swipe_view))
+        swipe_view.addView(MuscleCard(this, swipe_view))
+
         sensorManager = this.getSystemService(Context.SENSOR_SERVICE) as SensorManager
     }
 
@@ -71,8 +83,6 @@ class MainActivity : AppCompatActivity(), SensorEventListener {
             sensorX = event.values[0]
             sensorY = event.values[1]
             sensorZ = event.values[2]
-
-            textView.text = "$sensorX\n$sensorY\n$sensorZ"
 
             val v = sensorX * sensorX + sensorY * sensorY + sensorZ * sensorZ
 
