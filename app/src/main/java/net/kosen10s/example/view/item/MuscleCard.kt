@@ -6,7 +6,6 @@ import android.widget.ImageView
 import android.widget.TextView
 import com.bumptech.glide.Glide
 import com.mindorks.placeholderview.SwipeDirection
-import com.mindorks.placeholderview.SwipePlaceHolderView
 import com.mindorks.placeholderview.annotations.Layout
 import com.mindorks.placeholderview.annotations.Position
 import com.mindorks.placeholderview.annotations.Resolve
@@ -23,7 +22,6 @@ import net.kosen10s.example.entity.Training
 class MuscleCard constructor(
         private val context: Context,
         private val training: Training,
-        private val swipeView: SwipePlaceHolderView,
         private val callback: Callback?
 ) {
 
@@ -58,15 +56,18 @@ class MuscleCard constructor(
     @SwipeOutDirectional
     fun onSwipeOutDirectional(direction: SwipeDirection) {
         Log.d("DEBUG", "SwipeOutDirectional " + direction.name)
-        if (direction.direction == SwipeDirection.TOP.direction) {
-            callback?.onSwipeUp(training)
+
+        when(direction.direction) {
+            SwipeDirection.TOP.direction -> callback?.onSwipeUp(training, this)
+            SwipeDirection.LEFT.direction -> callback?.onSwipeOut(training, this)
+            SwipeDirection.BOTTOM.direction -> callback?.onSwipeDown(training, this)
+            SwipeDirection.BOTTOM.direction -> callback?.onSwipeIn(training, this)
         }
     }
 
     @SwipeCancelState
     fun onSwipeCancelState() {
         Log.d("DEBUG", "onSwipeCancelState")
-        swipeView.alpha = 1f
     }
 
     @SwipeInDirectional
@@ -80,6 +81,9 @@ class MuscleCard constructor(
     }
 
     interface Callback {
-        fun onSwipeUp(training: Training)
+        fun onSwipeUp(training: Training, card: MuscleCard)
+        fun onSwipeOut(training: Training, card: MuscleCard)
+        fun onSwipeIn(training: Training, card: MuscleCard)
+        fun onSwipeDown(training: Training, card: MuscleCard)
     }
 }
