@@ -6,6 +6,30 @@
     android:layout_height="match_parent"
     tools:context=".view.screen.main.MainActivity">
 
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="28dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="16dp"
+        android:gravity="center_vertical"
+        android:text="現在のポイント"
+        android:textSize="20sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/current_points"
+        android:layout_width="wrap_content"
+        android:layout_height="28dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginTop="16dp"
+        android:gravity="center_vertical"
+        android:text="2000pts"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
     <com.mindorks.placeholderview.SwipeDirectionalView
         android:id="@+id/swipe_view"
         android:layout_width="0dp"
@@ -18,6 +42,26 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
+        android:id="@+id/do_not_button"
+        android:text="やらない"
+        android:layout_width="wrap_content"
+        android:layout_height="50dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="5dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/swipe_view" />
+
+    <Button
+        android:id="@+id/do_later_button"
+        android:text="あとで"
+        android:layout_width="wrap_content"
+        android:layout_height="50dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginTop="5dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/swipe_view" />
 
     <TextView
         android:id="@+id/points"

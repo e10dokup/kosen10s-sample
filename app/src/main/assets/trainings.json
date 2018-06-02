@@ -25,13 +25,13 @@
     "description": "上体の姿勢を維持したまま、太ももと床が平行になるように腰をおろします",
     "category": "leg.png",
     "image": "squat.png",
-    "targetNum": "10回"
+    "target": "10回"
   },
   {
     "name": "ランジ",
     "description": "上体の姿勢を維持したまま、片足を大股で前に踏み出し腰を下ろします",
     "category": "leg.png",
     "image": "lunge.png",
-    "targetNum": "10回"
+    "target": "10回"
   }
 ]

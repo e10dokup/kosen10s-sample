@@ -11,11 +11,11 @@ class TrainingDataSource(activity: Activity) {
     val moshi = Moshi.Builder().add(ApplicationJsonAdapterFactory.INSTANCE).build()!!
     val activity = activity
 
-    fun getTrainings(): Array<Training> {
+    fun getTrainings(onSuccess:((Array<Training>) -> Unit)) {
         if (trainings == null) {
             trainings = loadTrainings()
         }
-        return trainings!!
+        onSuccess.invoke(trainings!!)
     }
 
     private fun loadTrainings() : Array<Training> {
