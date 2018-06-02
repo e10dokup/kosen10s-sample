@@ -57,11 +57,11 @@ class MuscleCard constructor(
     fun onSwipeOutDirectional(direction: SwipeDirection) {
         Log.d("DEBUG", "SwipeOutDirectional " + direction.name)
 
-        when(direction.direction) {
-            SwipeDirection.TOP.direction -> callback?.onSwipeUp(training, this)
-            SwipeDirection.LEFT.direction -> callback?.onSwipeOut(training, this)
-            SwipeDirection.BOTTOM.direction -> callback?.onSwipeDown(training, this)
-            SwipeDirection.BOTTOM.direction -> callback?.onSwipeIn(training, this)
+        when(direction) {
+            SwipeDirection.TOP
+            -> callback?.onSwipeUp(training, this)
+            SwipeDirection.LEFT, SwipeDirection.LEFT_BOTTOM, SwipeDirection.LEFT_TOP
+            -> callback?.onSwipeOut(training, this)
         }
     }
 
@@ -72,7 +72,14 @@ class MuscleCard constructor(
 
     @SwipeInDirectional
     fun onSwipeInDirectional(direction: SwipeDirection) {
-        Log.d("DEBUG", "SwipeInDirectional " + direction.name)
+        Log.d("DEBUG", "SwipeOutDirectional " + direction.name)
+
+        when(direction) {
+            SwipeDirection.BOTTOM
+            -> callback?.onSwipeDown(training, this)
+            SwipeDirection.RIGHT, SwipeDirection.RIGHT_BOTTOM, SwipeDirection.RIGHT_TOP
+            -> callback?.onSwipeIn(training, this)
+        }
     }
 
     @SwipingDirection
