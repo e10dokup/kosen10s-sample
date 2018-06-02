@@ -1,6 +1,8 @@
 package net.kosen10s.example.entity
 
-data class Training constructor(
+import se.ansman.kotshi.JsonSerializable
+
+@JsonSerializable data class Training constructor(
         var name: String,
         var category: String,
         var image: String,
