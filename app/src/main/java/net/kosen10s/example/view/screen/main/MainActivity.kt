@@ -7,7 +7,6 @@ import android.hardware.SensorEventListener
 import android.hardware.SensorManager
 import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
-import android.util.Log
 import kotlinx.android.synthetic.main.activity_main.*
 import net.kosen10s.example.R
 import net.kosen10s.example.entity.Training
@@ -36,7 +35,7 @@ class MainActivity : AppCompatActivity(), SensorEventListener, MuscleCard.Callba
         bottom_navigation.isEnabled = false
 
         bottom_navigation.setOnNavigationItemSelectedListener {
-            when(it.itemId) {
+            when (it.itemId) {
                 R.id.nav_camera -> return@setOnNavigationItemSelectedListener false
                 R.id.nav_gallery -> return@setOnNavigationItemSelectedListener false
                 R.id.nav_slideshow -> return@setOnNavigationItemSelectedListener false
@@ -60,13 +59,13 @@ class MainActivity : AppCompatActivity(), SensorEventListener, MuscleCard.Callba
     override fun onResume() {
         super.onResume()
         // Listenerの登録
-        val accel : Sensor = sensorManager.getDefaultSensor(Sensor.TYPE_ACCELEROMETER)
+        val accel: Sensor = sensorManager.getDefaultSensor(Sensor.TYPE_ACCELEROMETER)
 
         sensorManager.registerListener(this as SensorEventListener, accel, SensorManager.SENSOR_DELAY_NORMAL)
 
         presenter.getTrainings {
             it.forEach {
-                swipe_view.addView(MuscleCard(this, it, swipe_view, this))
+                swipe_view.addView(MuscleCard(this, it, this))
             }
         }
     }
@@ -98,7 +97,16 @@ class MainActivity : AppCompatActivity(), SensorEventListener, MuscleCard.Callba
     override fun onAccuracyChanged(sensor: Sensor?, accuracy: Int) {
     }
 
-    override fun onSwipeUp(training: Training) {
-        Log.d("training", training.name)
+    override fun onSwipeUp(training: Training, card: MuscleCard) {
+    }
+
+    override fun onSwipeOut(training: Training, card: MuscleCard) {
+        swipe_view.addView(MuscleCard(this, training, this))
+    }
+
+    override fun onSwipeIn(training: Training, card: MuscleCard) {
+    }
+
+    override fun onSwipeDown(training: Training, card: MuscleCard) {
     }
 }
