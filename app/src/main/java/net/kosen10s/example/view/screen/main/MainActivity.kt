@@ -19,9 +19,14 @@ import net.kosen10s.example.view.item.OnsenMusumeCard
 class MainActivity : AppCompatActivity(), SensorEventListener, MuscleCard.Callback {
 
     private lateinit var sensorManager: SensorManager
+    var isNextCardOnsenMusume = false
+    var isCurrentCardOnsenMusume = false
 
     companion object {
         const val MOVE_THRESHOLD = 10 * 10 + 10 * 10
+        const val ONSEN_MUSUME_RIGHT_BUTTON_TEXT = "超がんばる→"
+        const val TRAINING_RIGHT_BUTTON_TEXT = "またやる→"
+
     }
 
     private val presenter by lazy {
@@ -63,15 +68,27 @@ class MainActivity : AppCompatActivity(), SensorEventListener, MuscleCard.Callba
         super.onResume()
         // Listenerの登録
         val accel: Sensor = sensorManager.getDefaultSensor(Sensor.TYPE_ACCELEROMETER)
-
+        right_button.text = TRAINING_RIGHT_BUTTON_TEXT
         sensorManager.registerListener(this as SensorEventListener, accel, SensorManager.SENSOR_DELAY_NORMAL)
-
-        presenter.getTrainings {
-            it.forEach {
-                swipe_view.addView(MuscleCard(this, it, this))
+        addNewMuscleCards()
+        swipe_view.addItemRemoveListener {
+            when {
+                it == 1 -> {
+                    isNextCardOnsenMusume = true
+                    addNewOnsenMusumeCards()
+                    addNewMuscleCards()
+                }
+                isNextCardOnsenMusume -> {
+                    right_button.text = ONSEN_MUSUME_RIGHT_BUTTON_TEXT
+                    isNextCardOnsenMusume = false
+                    isCurrentCardOnsenMusume = true
+                }
+                isCurrentCardOnsenMusume -> {
+                    isCurrentCardOnsenMusume = false
+                    right_button.text = TRAINING_RIGHT_BUTTON_TEXT
+                }
             }
         }
-        swipe_view.addView(OnsenMusumeCard(this, presenter.getOnsenMusume(), swipe_view))
     }
 
     override fun onPause() {
@@ -80,6 +97,7 @@ class MainActivity : AppCompatActivity(), SensorEventListener, MuscleCard.Callba
     }
 
     override fun onSensorChanged(event: SensorEvent) {
+        if (isCurrentCardOnsenMusume) return
         val sensorX: Float
         val sensorY: Float
         val sensorZ: Float
@@ -126,5 +144,17 @@ class MainActivity : AppCompatActivity(), SensorEventListener, MuscleCard.Callba
     private fun updatePointText() {
         current_points.text = presenter.getCurrentPoints().point.toString() + "pts"
         Log.d("updatePointText", presenter.getCurrentPoints().point.toString())
+    }
+
+    private fun addNewMuscleCards() {
+        presenter.getTrainings {
+            it.forEach {
+                swipe_view.addView(MuscleCard(this, it, this))
+            }
+        }
+    }
+
+    private fun addNewOnsenMusumeCards() {
+        swipe_view.addView(OnsenMusumeCard(this, presenter.getOnsenMusume(), swipe_view))
     }
 }
