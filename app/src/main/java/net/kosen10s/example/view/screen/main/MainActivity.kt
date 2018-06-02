@@ -13,6 +13,7 @@ import net.kosen10s.example.entity.Training
 import net.kosen10s.example.ext.dpToPx
 import net.kosen10s.example.presenter.MainActivityPresenter
 import net.kosen10s.example.view.item.MuscleCard
+import net.kosen10s.example.view.item.OnsenMusumeCard
 
 class MainActivity : AppCompatActivity(), SensorEventListener, MuscleCard.Callback {
 
@@ -68,6 +69,7 @@ class MainActivity : AppCompatActivity(), SensorEventListener, MuscleCard.Callba
                 swipe_view.addView(MuscleCard(this, it, this))
             }
         }
+        swipe_view.addView(OnsenMusumeCard(this, presenter.getOnsenMusume(), swipe_view))
     }
 
     override fun onPause() {

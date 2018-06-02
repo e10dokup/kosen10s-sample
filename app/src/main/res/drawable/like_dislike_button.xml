@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<selector xmlns:android="http://schemas.android.com/apk/res/android">
+    <!-- タップしたとき -->
+    <item android:color="@color/button_color" android:state_pressed="true"/>
+    <!-- 通常 -->
+    <item android:color="@color/button_color"/>
+</selector>
