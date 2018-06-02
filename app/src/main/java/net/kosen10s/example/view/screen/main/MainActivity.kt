@@ -93,7 +93,6 @@ class MainActivity : AppCompatActivity(), SensorEventListener, MuscleCard.Callba
 
             if (v > MOVE_THRESHOLD) {
                 presenter.countup()
-                points.text = presenter.count().toString()
             }
         }
     }
@@ -125,7 +124,7 @@ class MainActivity : AppCompatActivity(), SensorEventListener, MuscleCard.Callba
     fun onBeginTraining() {}
 
     private fun updatePointText() {
-        // current_points.text = presenter.getCurrentPoints().point.toString() + "pts"
+        current_points.text = presenter.getCurrentPoints().point.toString() + "pts"
         Log.d("updatePointText", presenter.getCurrentPoints().point.toString())
     }
 }
