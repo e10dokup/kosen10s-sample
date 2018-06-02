@@ -1,0 +1,37 @@
+[
+  {
+    "name": "クランチ",
+    "description": "仰向けになって足を床につけ、上体を起こします",
+    "category": "abdominal.png",
+    "image": "crunch.png",
+    "target": "10回"
+  },
+  {
+    "name": "ツイストクランチ",
+    "description": "会う向けになって足を床につけ、上体を左右に起こします",
+    "category": "abdominal.png",
+    "image": "twist_crunch.png",
+    "target": "10回"
+  },
+  {
+    "name": "バックエクステンション",
+    "description": "うつ伏せになり、上体を持ち上げます",
+    "category": "spine.png",
+    "image": "back_extension.pmg",
+    "target": "10回"
+  },
+  {
+    "name": "スクワット",
+    "description": "上体の姿勢を維持したまま、太ももと床が平行になるように腰をおろします",
+    "category": "leg.png",
+    "image": "squat.png",
+    "targetNum": "10回"
+  },
+  {
+    "name": "ランジ",
+    "description": "上体の姿勢を維持したまま、片足を大股で前に踏み出し腰を下ろします",
+    "category": "leg.png",
+    "image": "lunge.png",
+    "targetNum": "10回"
+  }
+]
