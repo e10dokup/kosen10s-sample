@@ -7,13 +7,13 @@ import android.hardware.SensorEventListener
 import android.hardware.SensorManager
 import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
-import android.util.Log
 import kotlinx.android.synthetic.main.activity_main.*
 import net.kosen10s.example.R
 import net.kosen10s.example.entity.Training
 import net.kosen10s.example.ext.dpToPx
 import net.kosen10s.example.presenter.MainActivityPresenter
 import net.kosen10s.example.view.item.MuscleCard
+import net.kosen10s.example.view.item.OnsenMusumeCard
 
 class MainActivity : AppCompatActivity(), SensorEventListener, MuscleCard.Callback {
 
@@ -69,6 +69,7 @@ class MainActivity : AppCompatActivity(), SensorEventListener, MuscleCard.Callba
                 swipe_view.addView(MuscleCard(this, it, this))
             }
         }
+        swipe_view.addView(OnsenMusumeCard(this, presenter.getOnsenMusume(), swipe_view))
     }
 
     override fun onPause() {
@@ -99,19 +100,15 @@ class MainActivity : AppCompatActivity(), SensorEventListener, MuscleCard.Callba
     }
 
     override fun onSwipeUp(training: Training, card: MuscleCard) {
-        Log.d("aaa", "up")
     }
 
     override fun onSwipeOut(training: Training, card: MuscleCard) {
         swipe_view.addView(MuscleCard(this, training, this))
-        Log.d("aaa", "out")
     }
 
     override fun onSwipeIn(training: Training, card: MuscleCard) {
-        Log.d("aaa", "in")
     }
 
     override fun onSwipeDown(training: Training, card: MuscleCard) {
-        Log.d("aaa", "down")
     }
 }

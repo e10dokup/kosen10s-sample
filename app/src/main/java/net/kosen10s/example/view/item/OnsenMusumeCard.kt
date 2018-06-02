@@ -23,8 +23,7 @@ import net.kosen10s.example.entity.OnsenMusume
 class OnsenMusumeCard constructor(
         private val context: Context,
         private val onsenMusume: OnsenMusume,
-        private val swipeView: SwipePlaceHolderView,
-        private val callback: Callback?
+        private val swipeView: SwipePlaceHolderView
 ) {
 
     @View(R.id.onsen_musume_image)
@@ -51,9 +50,6 @@ class OnsenMusumeCard constructor(
     @SwipeOutDirectional
     fun onSwipeOutDirectional(direction: SwipeDirection) {
         Log.d("DEBUG", "SwipeOutDirectional " + direction.name)
-        if (direction.direction == SwipeDirection.TOP.direction) {
-            callback?.onSwipeUp(onsenMusume)
-        }
     }
 
     @SwipeCancelState
@@ -70,9 +66,5 @@ class OnsenMusumeCard constructor(
     @SwipingDirection
     fun onSwipingDirection(direction: SwipeDirection) {
         Log.d("DEBUG", "SwipingDirection " + direction.name)
-    }
-
-    interface Callback {
-        fun onSwipeUp(onsenMusume: OnsenMusume)
     }
 }
