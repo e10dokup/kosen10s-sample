@@ -46,8 +46,10 @@ class MuscleCard constructor(
 
     @Resolve
     fun onResolved() {
-        Glide.with(context).load("https://placehold.jp/320x320.png").into(muscleImage)
-        Glide.with(context).load("https://placehold.jp/640x640.png").into(trainingImage)
+        val categoryId = context.resources.getIdentifier(training.category, "drawable", context.packageName)
+        val imageId = context.resources.getIdentifier(training.image, "drawable", context.packageName)
+        Glide.with(context).load(categoryId).into(muscleImage)
+        Glide.with(context).load(imageId).into(trainingImage)
         trainingTitle.text = training.name
         trainingDescription.text = training.description
         trainingTarget.text = "目標：" + training.target
