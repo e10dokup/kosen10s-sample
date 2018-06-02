@@ -6,15 +6,15 @@
     "speech_texts": [
       {
         "point": 0,
-        "text": "Hello"
+        "text": "0 points message"
       },
       {
         "point": 100,
-        "text": "Hello"
+        "text": "100 points message"
       },
       {
         "point": 200,
-        "text": "Hello"
+        "text": "200 points message"
       }
     ]
   },
@@ -25,15 +25,15 @@
     "speech_texts": [
       {
         "point": 0,
-        "text": "Hello"
+        "text": "0 points message"
       },
       {
         "point": 100,
-        "text": "Hello"
+        "text": "100 points message"
       },
       {
         "point": 200,
-        "text": "Hello"
+        "text": "200 points message"
       }
     ]
   },
@@ -44,15 +44,15 @@
     "speech_texts": [
       {
         "point": 0,
-        "text": "Hello"
+        "text": "0 points message"
       },
       {
         "point": 100,
-        "text": "Hello"
+        "text": "100 points message"
       },
       {
         "point": 200,
-        "text": "Hello"
+        "text": "200 points message"
       }
     ]
   }

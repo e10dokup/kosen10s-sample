@@ -9,7 +9,7 @@ import se.ansman.kotshi.JsonSerializable
 data class OnsenMusume(
         val id: String,
         val name: String,
-        val imageUri: String,
+        val imageName: String,
         val speechText: String
 )
 
