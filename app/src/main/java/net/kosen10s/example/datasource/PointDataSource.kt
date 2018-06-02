@@ -16,9 +16,9 @@ class PointDataSource(activity: Activity) {
         return Point(point)
     }
 
-    fun addPoints(addedPoints: Int): Point {
+    fun addPoints(additionalPoints: Int): Point {
         val prePoints = getPoints().point
-        val totalPoints = prePoints + addedPoints
+        val totalPoints = prePoints + additionalPoints
         with(mPref.edit()) {
             putInt(prefKey, totalPoints)
             commit()
