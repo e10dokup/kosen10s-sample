@@ -10,7 +10,6 @@ import android.support.v7.app.AppCompatActivity
 import android.util.Log
 import kotlinx.android.synthetic.main.activity_main.*
 import net.kosen10s.example.R
-import net.kosen10s.example.R.id.*
 import net.kosen10s.example.entity.Training
 import net.kosen10s.example.ext.dpToPx
 import net.kosen10s.example.presenter.MainActivityPresenter
@@ -126,7 +125,7 @@ class MainActivity : AppCompatActivity(), SensorEventListener, MuscleCard.Callba
     fun onBeginTraining() {}
 
     private fun updatePointText() {
-        current_points.text = presenter.getCurrentPoints().point.toString() + "pts"
+        // current_points.text = presenter.getCurrentPoints().point.toString() + "pts"
         Log.d("updatePointText", presenter.getCurrentPoints().point.toString())
     }
 }
