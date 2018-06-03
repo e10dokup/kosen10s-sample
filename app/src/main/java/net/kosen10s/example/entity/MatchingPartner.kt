@@ -10,6 +10,7 @@ data class MatchingPartner(
         val necessaryPoints: Int,
         val favoriteMuscleImageName: String
 )
+
 data class MatchingPartnerData(
         val id: String,
         val name: String,
