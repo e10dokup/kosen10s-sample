@@ -28,8 +28,10 @@ class MainActivity : AppCompatActivity(), SensorEventListener, MuscleCard.Callba
 
     companion object {
         const val MOVE_THRESHOLD = 10 * 10 + 10 * 10
-        const val ONSEN_MUSUME_RIGHT_BUTTON_TEXT = "超がんばる→"
-        const val TRAINING_RIGHT_BUTTON_TEXT = "またやる→"
+        const val ONSEN_MUSUME_RIGHT_BUTTON_TEXT = "超がんばる"
+        const val TRAINING_RIGHT_BUTTON_TEXT = "またやる"
+        const val ONSEN_MUSUME_LEFT_BUTTON_TEXT = "まだがんばる"
+        const val TRAINING_LEFT_BUTTON_TEXT = "もういい"
 
     }
 
@@ -73,6 +75,7 @@ class MainActivity : AppCompatActivity(), SensorEventListener, MuscleCard.Callba
         // Listenerの登録
         val accel: Sensor = sensorManager.getDefaultSensor(Sensor.TYPE_ACCELEROMETER)
         right_button.text = TRAINING_RIGHT_BUTTON_TEXT
+        left_button.text = TRAINING_LEFT_BUTTON_TEXT
         sensorManager.registerListener(this as SensorEventListener, accel, SensorManager.SENSOR_DELAY_NORMAL)
         addNewMuscleCards()
         swipe_view.addItemRemoveListener {
@@ -84,12 +87,14 @@ class MainActivity : AppCompatActivity(), SensorEventListener, MuscleCard.Callba
                 }
                 isNextCardOnsenMusume -> {
                     right_button.text = ONSEN_MUSUME_RIGHT_BUTTON_TEXT
+                    left_button.text = ONSEN_MUSUME_LEFT_BUTTON_TEXT
                     isNextCardOnsenMusume = false
                     isCurrentCardOnsenMusume = true
                 }
                 isCurrentCardOnsenMusume -> {
                     isCurrentCardOnsenMusume = false
                     right_button.text = TRAINING_RIGHT_BUTTON_TEXT
+                    left_button.text = TRAINING_LEFT_BUTTON_TEXT
                 }
             }
         }
