@@ -10,7 +10,7 @@ import net.kosen10s.example.entity.Point
 
 class PointDataSource(activity: Activity) {
     private val prefKey = "point"
-    private val mPref = activity.getPreferences(Context.MODE_PRIVATE)!!
+    private val mPref = activity.getSharedPreferences("kinder", Context.MODE_PRIVATE)!!
     fun getPoints(): Point {
         val point = mPref.getInt(prefKey, 0)
         return Point(point)
@@ -21,7 +21,7 @@ class PointDataSource(activity: Activity) {
         val totalPoints = prePoints + additionalPoints
         with(mPref.edit()) {
             putInt(prefKey, totalPoints)
-            commit()
+            apply()
         }
         return Point(totalPoints)
     }
@@ -31,7 +31,7 @@ class PointDataSource(activity: Activity) {
         val totalPoints = prePoints - consumedPoints
         with(mPref.edit()) {
             putInt(prefKey, totalPoints)
-            commit()
+            apply()
         }
         return Point(totalPoints)
     }

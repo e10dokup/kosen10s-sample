@@ -14,7 +14,7 @@ class MainActivityPresenter constructor(
 ) {
 
     companion object {
-        const val TRAINING_END_COUNT = 50
+        const val TRAINING_END_COUNT = 150
     }
 
     private val activity = activity
@@ -24,8 +24,8 @@ class MainActivityPresenter constructor(
     private val onsenMusumeDataSource = OnsenMusumeDataSource(activity)
     private val pointDataSource = PointDataSource(activity)
 
-    fun onClickStartButton() {
-        navigator.navigateToNews()
+    fun onNavigationMatching() {
+        navigator.navigateToMatching()
     }
 
     fun onNextTraining() {

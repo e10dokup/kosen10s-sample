@@ -1,8 +1,7 @@
 package net.kosen10s.example.presenter
 
-import net.kosen10s.example.datasource.OnsenMusumeDataSource
+import net.kosen10s.example.datasource.MatchingPartnerDataSource
 import net.kosen10s.example.datasource.PointDataSource
-import net.kosen10s.example.datasource.TrainingDataSource
 import net.kosen10s.example.entity.MatchingPartner
 import net.kosen10s.example.entity.Point
 import net.kosen10s.example.view.navigator.MatchingNavigator
@@ -14,9 +13,7 @@ class MatchingActivityPresenter constructor(
 
     private val activity = activity
     private val navigator = MatchingNavigator(activity)
-    private var moved_count = 0
-    private val trainingDataSource = TrainingDataSource(activity)
-    private val onsenMusumeDataSource = OnsenMusumeDataSource(activity)
+    private val matchingPartnerDataSource = MatchingPartnerDataSource(activity)
     private val pointDataSource = PointDataSource(activity)
 
     fun onNavigationMain() {
@@ -29,9 +26,7 @@ class MatchingActivityPresenter constructor(
 
     fun getPartners(onSuccess: ((Array<MatchingPartner>) -> Unit)) {
         val point = getCurrentPoints()
-//        trainingDataSource.getTrainings {
-//            onSuccess.invoke(it)
-//        }
+        onSuccess.invoke(matchingPartnerDataSource.getAvailableItems(point))
     }
 
     fun getCurrentPoints(): Point {

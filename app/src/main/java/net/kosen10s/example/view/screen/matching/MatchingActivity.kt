@@ -83,6 +83,8 @@ class MatchingActivity : AppCompatActivity(), PartnerCard.Callback {
     }
 
     override fun onSwipeIn(partner: MatchingPartner, card: PartnerCard) {
+        presenter.onNextPartner(partner.necessaryPoints)
+        updatePointText()
     }
 
     override fun onSwipeDown(partner: MatchingPartner, card: PartnerCard) {
