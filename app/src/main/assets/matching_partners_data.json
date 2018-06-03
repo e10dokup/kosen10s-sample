@@ -1,0 +1,23 @@
+[
+  {
+    "id": "0",
+    "name": "なでしこ",
+    "image_name": "sakura_2_card",
+    "necessary_points": 300,
+    "favorite_muscle_image_name": "abdominal"
+  },
+  {
+    "id": "1",
+    "name": "リン",
+    "image_name": "sakura_3_card",
+    "necessary_points": 500,
+    "favorite_muscle_image_name": "spine"
+  },
+  {
+    "id": "2",
+    "name": "恵那",
+    "image_name": "sakura_3_card",
+    "necessary_points": 700,
+    "favorite_muscle_image_name": "leg"
+  }
+]
