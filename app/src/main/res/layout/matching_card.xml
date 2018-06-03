@@ -28,7 +28,7 @@
                 app:layout_constraintTop_toTopOf="parent" />
 
             <TextView
-                android:id="@+id/training_title"
+                android:id="@+id/name"
                 android:layout_width="wrap_content"
                 android:layout_height="40dp"
                 android:layout_marginStart="16dp"
@@ -41,7 +41,7 @@
                 app:layout_constraintTop_toTopOf="parent" />
 
             <ImageView
-                android:id="@+id/training_image"
+                android:id="@+id/matching_image"
                 android:layout_width="300dp"
                 android:layout_height="300dp"
                 android:layout_marginBottom="16dp"
@@ -52,49 +52,27 @@
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/muscle_image" />
+                app:layout_constraintTop_toBottomOf="@+id/muscle_image"
+                tools:background="#888888"/>
 
-            <TextView
-                android:id="@+id/training_timer"
-                android:layout_width="300dp"
-                android:layout_height="300dp"
-                android:layout_marginBottom="16dp"
-                android:layout_marginEnd="16dp"
-                android:layout_marginStart="16dp"
-                android:layout_marginTop="16dp"
-                android:text="0:00.00"
-                android:textSize="60sp"
-                android:gravity="center"
-                android:background="#CCFFFFFF"
-                android:textColor="#8A000000"
-                android:visibility="invisible"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/muscle_image" />
-
-            <TextView
+            <ImageView
                 android:id="@+id/training_description"
                 android:layout_width="120dp"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="32dp"
                 android:layout_marginStart="16dp"
-                android:text="description"
-                android:textSize="14sp"
-                android:textStyle="bold"
-                android:textColor="#FFFFFF"
+                android:src="@drawable/kin_point_logo"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintStart_toStartOf="parent" />
 
             <TextView
-                android:id="@+id/training_target"
+                android:id="@+id/necessary_point"
                 android:layout_width="120dp"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="32dp"
                 android:layout_marginEnd="16dp"
-                android:text="目安：30回"
-                android:textSize="14sp"
-                android:textStyle="bold"
+                android:text="2000pts"
+                android:textSize="24sp"
                 android:textColor="#FFFFFF"
                 android:gravity="end"
                 app:layout_constraintBottom_toBottomOf="parent"

@@ -21,6 +21,8 @@
         <activity android:name="net.kosen10s.example.view.screen.articles.ArticlesActivity">
 
         </activity>
-    </application>
+        <activity android:name=".view.screen.matching.MatchingActivity">
 
+        </activity>
+    </application>
 </manifest>
