@@ -4,18 +4,19 @@ import android.content.Context
 import android.util.Log
 import android.widget.ImageView
 import android.widget.TextView
+import android.view.View
 import com.bumptech.glide.Glide
 import com.mindorks.placeholderview.SwipeDirection
 import com.mindorks.placeholderview.annotations.Layout
 import com.mindorks.placeholderview.annotations.Position
 import com.mindorks.placeholderview.annotations.Resolve
-import com.mindorks.placeholderview.annotations.View
 import com.mindorks.placeholderview.annotations.swipe.SwipeCancelState
 import com.mindorks.placeholderview.annotations.swipe.SwipeInDirectional
 import com.mindorks.placeholderview.annotations.swipe.SwipeOutDirectional
 import com.mindorks.placeholderview.annotations.swipe.SwipingDirection
 import net.kosen10s.example.R
 import net.kosen10s.example.entity.Training
+import java.util.*
 
 
 @Layout(R.layout.muscle_card)
@@ -24,25 +25,30 @@ class MuscleCard constructor(
         private val training: Training,
         private val callback: Callback?
 ) {
-
-    @View(R.id.muscle_image)
+    @com.mindorks.placeholderview.annotations.View(R.id.muscle_image)
     lateinit var muscleImage: ImageView
 
-    @View(R.id.training_title)
+    @com.mindorks.placeholderview.annotations.View(R.id.training_title)
     lateinit var trainingTitle: TextView
 
-    @View(R.id.training_image)
+    @com.mindorks.placeholderview.annotations.View(R.id.training_image)
     lateinit var trainingImage: ImageView
 
-    @View(R.id.training_description)
+    @com.mindorks.placeholderview.annotations.View(R.id.training_description)
     lateinit var trainingDescription: TextView
 
-    @View(R.id.training_target)
+    @com.mindorks.placeholderview.annotations.View(R.id.training_target)
     lateinit var trainingTarget: TextView
+
+    @com.mindorks.placeholderview.annotations.View(R.id.training_timer)
+    lateinit var trainingTimer: TextView
 
     @JvmField
     @Position
     var position: Int = 0
+
+    private var elapsed = 0
+    private var timer : Timer? = null
 
     @Resolve
     fun onResolved() {
@@ -58,6 +64,8 @@ class MuscleCard constructor(
     @SwipeOutDirectional
     fun onSwipeOutDirectional(direction: SwipeDirection) {
         Log.d("DEBUG", "SwipeOutDirectional " + direction.name)
+        timer?.cancel()
+        timer = null
 
         when(direction) {
             SwipeDirection.TOP
@@ -75,6 +83,8 @@ class MuscleCard constructor(
     @SwipeInDirectional
     fun onSwipeInDirectional(direction: SwipeDirection) {
         Log.d("DEBUG", "SwipeOutDirectional " + direction.name)
+        timer?.cancel()
+        timer = null
 
         when(direction) {
             SwipeDirection.BOTTOM
@@ -87,6 +97,26 @@ class MuscleCard constructor(
     @SwipingDirection
     fun onSwipingDirection(direction: SwipeDirection) {
         Log.d("DEBUG", "SwipingDirection " + direction.name)
+    }
+
+    fun onStartTimer() {
+        elapsed = 0
+        updateTrainingTimer()
+        trainingTimer.visibility = View.VISIBLE
+        timer = Timer()
+        timer?.schedule(object : TimerTask() {
+            override fun run() {
+                elapsed++
+                updateTrainingTimer()
+            }
+        }, 0, 10)
+    }
+
+    private fun updateTrainingTimer() {
+        val min = elapsed * 10 / 1000 / 60
+        val sec = elapsed * 10 / 1000 % 60
+        val msec = (elapsed * 10 - sec * 1000 - min * 1000 * 60) / 10
+        trainingTimer.text = "%01d:%02d.%02d".format(min, sec, msec)
     }
 
     interface Callback {

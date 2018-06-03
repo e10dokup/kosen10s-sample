@@ -5,16 +5,20 @@ import android.hardware.Sensor
 import android.hardware.SensorEvent
 import android.hardware.SensorEventListener
 import android.hardware.SensorManager
+import android.media.AudioManager
 import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
 import android.util.Log
+import android.view.View
 import kotlinx.android.synthetic.main.activity_main.*
+import kotlinx.android.synthetic.main.muscle_card.*
 import net.kosen10s.example.R
 import net.kosen10s.example.entity.Training
 import net.kosen10s.example.ext.dpToPx
 import net.kosen10s.example.presenter.MainActivityPresenter
 import net.kosen10s.example.view.item.MuscleCard
 import net.kosen10s.example.view.item.OnsenMusumeCard
+import java.util.*
 
 class MainActivity : AppCompatActivity(), SensorEventListener, MuscleCard.Callback {
 
@@ -139,7 +143,9 @@ class MainActivity : AppCompatActivity(), SensorEventListener, MuscleCard.Callba
         updatePointText()
     }
 
-    fun onBeginTraining() {}
+    fun onBeginTraining() {
+        (swipe_view.getAllResolvers().first() as MuscleCard).onStartTimer()
+    }
 
     private fun updatePointText() {
         current_points.text = presenter.getCurrentPoints().point.toString() + "pts"
