@@ -16,9 +16,10 @@ class MatchingPartnerDataSource(activity: Activity) {
         val partnerListData = getData()
         val res: MutableList<MatchingPartner> = mutableListOf()
         for (partner in partnerListData) {
-            if (point.point >= partner.necessary_points) {
-                res.add(MatchingPartner(partner.id, partner.name, partner.image_name, partner.necessary_points, partner.favorite_muscle_image_name))
-            }
+//            if (point.point >= partner.necessary_points) {
+//                res.add(MatchingPartner(partner.id, partner.name, partner.image_name, partner.necessary_points, partner.favorite_muscle_image_name))
+//            }
+            res.add(MatchingPartner(partner.id, partner.name, partner.image_name, partner.necessary_points, partner.favorite_muscle_image_name))
         }
         return res.toTypedArray()
     }

@@ -1,6 +1,7 @@
 package net.kosen10s.example.view.screen.matching
 
 import android.os.Bundle
+import android.support.design.widget.Snackbar
 import android.support.v7.app.AppCompatActivity
 import android.util.Log
 import kotlinx.android.synthetic.main.activity_main.*
@@ -83,8 +84,14 @@ class MatchingActivity : AppCompatActivity(), PartnerCard.Callback {
     }
 
     override fun onSwipeIn(partner: MatchingPartner, card: PartnerCard) {
-        presenter.onNextPartner(partner.necessaryPoints)
-        updatePointText()
+        if (partner.necessaryPoints >= presenter.getCurrentPoints().point) {
+            Snackbar.make(bottom_navigation, "残念！あなたはまだこの人に気持ちを伝えるための筋肉が足りないようです。もっとマッスル！", Snackbar.LENGTH_LONG).show()
+            swipe_view.addView(PartnerCard(this, partner, this))
+        } else {
+            presenter.onNextPartner(partner.necessaryPoints)
+            updatePointText()
+        }
+
     }
 
     override fun onSwipeDown(partner: MatchingPartner, card: PartnerCard) {
