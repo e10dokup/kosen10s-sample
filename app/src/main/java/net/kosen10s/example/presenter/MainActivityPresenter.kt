@@ -1,7 +1,6 @@
 package net.kosen10s.example.presenter
 
 import net.kosen10s.example.datasource.OnsenMusumeDataSource
-import net.kosen10s.example.datasource.ArticlesDataSource
 import net.kosen10s.example.datasource.PointDataSource
 import net.kosen10s.example.datasource.TrainingDataSource
 import net.kosen10s.example.entity.OnsenMusume
@@ -15,7 +14,7 @@ class MainActivityPresenter constructor(
 ) {
 
     companion object {
-        const val TRAINING_END_COUNT = 20
+        const val TRAINING_END_COUNT = 50
     }
 
     private val activity = activity
